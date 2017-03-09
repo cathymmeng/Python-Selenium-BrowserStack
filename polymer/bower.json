@@ -1,0 +1,13 @@
+{
+  "name": "cmm-selenium-guinea-pig",
+  "description": "Polymer component for testing selenium/behave component testing.",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0",
+    "paper-elements": "^1.0.7",
+    "iron-elements": "^1.0.10"
+  },
+  "devDependencies": {
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  }
+}

@@ -1,0 +1,152 @@
+
+<dom-module id="cmm-selenium-guinea-pig">
+  <template>
+    <style>
+      :host {
+        display: block;
+        padding:10px;
+        box-sizing: border-box;
+      }
+      h2 {
+        margin-bottom: 4px;
+      }
+      h3 {
+        margin-top: 0px;
+      }
+      h3 {
+        font-size: 12px;
+        font-weight: normal;
+        font-style: italic;
+      }
+      h2,h3 {
+        text-align: center;
+      }
+      paper-material {
+        //height: 500px;
+        width: 700px;
+        padding:10px;
+        margin-left: auto;
+        margin-right: auto;
+        box-sizing: border-box;
+      }
+      paper-icon-button {
+        float:right;
+      }
+      paper-card {
+        width: 49.6%;
+        box-sizing: border-box;
+        vertical-align: top;
+      }
+      paper-card.full {
+        width: 99.4%;
+        margin-top: 20px;
+        box-sizing: border-box;
+      }
+      paper-checkbox {
+        width:19%;
+        padding:10px;
+        border: solid lightgray 1px;
+        box-sizing: border-box;
+      }
+      paper-checkbox[checked] {
+         background: rgba(231, 242, 242, 1);
+      }
+      paper-progress {
+        margin-top: 7px;
+        --paper-progress-height: 20px;
+        width:100%;
+      }
+    </style>
+    <h2 itemprop="heading">[[heading]]</h2>
+    <h3 itemprop="subtitle">[[subtitle]]</h3>
+    <paper-material elevation="1">
+      <paper-card>
+        <div class="card-content">
+          <paper-input label="Heading" value="{{heading}}" itemprop="inputHeading1" title="Set the page heading"></paper-input>
+          <paper-input label="Subtitle" value="{{subtitle}}" itemprop="inputSubtitle1" title="Set the paget subtitle"></paper-input>
+        </div>
+        <div class="card-actions">
+          <paper-icon-button on-tap="_reset" icon="restore" itemprop="reset1" title="Reset to default values"></paper-icon-button>
+          <paper-icon-button on-tap="_clear" icon="delete" itemprop="clear1" title="Clear all of the fields"></paper-icon-button>
+        </div>
+      </paper-card>
+      <paper-card>
+        <div class="card-content">
+          <paper-input label="Heading" value="{{heading}}" itemprop="inputHeading2" title="Set the page heading"></paper-input>
+          <paper-input label="Subtitle" value="{{subtitle}}" itemprop="inputSubtitle2" title="Set the paget subtitle"></paper-input>
+        </div>
+        <div class="card-actions">
+          <paper-icon-button on-tap="_reset" icon="restore" itemprop="reset2" title="Reset to default values"></paper-icon-button>
+          <paper-icon-button on-tap="_clear" icon="delete" itemprop="clear2" title="Set the paget subtitle"></paper-icon-button>
+        </div>
+      </paper-card>
+      <paper-card class="full">
+        <div class="card-content">
+          <paper-checkbox checked="{{a}}" itemprop="checkboxA" title="Option A">A</paper-checkbox>
+          <paper-checkbox checked="{{b}}" itemprop="checkboxB" title="Option B">B</paper-checkbox>
+          <paper-checkbox checked="{{c}}" itemprop="checkboxC" title="Option C">C</paper-checkbox>
+          <paper-checkbox checked="{{d}}" itemprop="checkboxD" title="Option D">D</paper-checkbox>
+          <paper-checkbox checked="{{e}}" itemprop="checkboxE" title="Option E">E</paper-checkbox>
+          <paper-progress value="[[done]]" itemprop="progress" title="Percentage of options that have been selected"></paper-progress>
+        </div>
+        <div class="card-actions">
+          <paper-icon-button on-tap="_checkAll" icon="radio-button-checked" itemprop="checkAll" title="Select all of the options"></paper-icon-button>
+          <paper-icon-button on-tap="_uncheckAll" icon="radio-button-unchecked" itemprop="uncheckAll" title="Unselect all of the options"></paper-icon-button>
+        </div>
+      </paper-card>
+    </paper-material>
+  </template>
+  <script>
+    (function(Polymer) {
+      var DEFAUT_HEADING = 'Hello World';
+      var DEFAUT_SUBTITLE = 'From a little guinea pig';
+      Polymer({
+        is: 'cmm-selenium-guinea-pig',
+        properties: {
+          heading: { type:String, notify:true, value: DEFAUT_HEADING },
+          subtitle: { type:String, notify:true, value: DEFAUT_SUBTITLE },
+          a: { type:Boolean, notify:true, value: true },
+          b: { type:Boolean, notify:true, value: true },
+          c: { type:Boolean, notify:true, value: false },
+          d: { type:Boolean, notify:true, value: false },
+          e: { type:Boolean, notify:true, value: false },
+          done: { type: Number, notify:true, computed:'_calculateCompletion(a,b,c,d,e)' }
+        },
+        observers: [
+          'debug(a)'
+        ],
+        debug: function(object) {
+          console.log(object);
+        },
+        _checkAll: function() {
+          this.a = true;
+          this.b = true;
+          this.c = true;
+          this.d = true;
+          this.e = true;
+        },
+        _uncheckAll: function() {
+          this.a = false;
+          this.b = false;
+          this.c = false;
+          this.d = false;
+          this.e = false;
+        },
+        _calculateCompletion: function(a,b,c,d,e) {
+          return (a ? 20 : 0) + (b ? 20 : 0) + (c ? 20 : 0) + (d ? 20 : 0) + (e ? 20 : 0);
+        },
+        _reset: function() {
+          this.heading = DEFAUT_HEADING;
+          this.subtitle = DEFAUT_SUBTITLE;
+        },
+        _clear: function() {
+          this.heading = '';
+          this.subtitle = '';
+        },
+        ready: function() {
+          console.log('Element cmm-selenium-guinea-pig has been created.');
+        }
+      });
+    })(window.Polymer);
+  </script>
+</dom-module>
