@@ -16,7 +16,7 @@ npm install bower
 
 #### Download project Bower dependencies
 
-From with the polymer directory:
+From within the polymer directory:
 
 ```bash
 bower update
