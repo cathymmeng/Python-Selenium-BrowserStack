@@ -2,6 +2,6 @@
 
 This is a place to play with the Python Behave library, to use Selenium to test web pages.
 
-# Setup Requirements
-
-- Add the drivers directory to the path
+Example:
+  - Change directory to the behave directory
+  - Run: ./behave.sh features/google-search-with-different-drivers.feature
