@@ -5,6 +5,13 @@ import au.id.mcmaster.playwithjbehave.common.Story;
 import au.id.mcmaster.playwithjbehave.steps.SampleSteps;
 import au.id.mcmaster.playwithjbehave.steps.GoogleSteps;
 
+/**
+ * This is a class for mapping Story files to a list of Step classes, that implement the steps.
+ * 
+ * The Story files can be found in a stories directory on the classpath (see src/test/resources)
+ * 
+ * @author Tim McMaster
+ */
 public class StorySuite {
 	@Story(name = "sample", steps = { SampleSteps.class })
 	public static class SampleStory extends GenericStory {}
