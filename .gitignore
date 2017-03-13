@@ -5,3 +5,5 @@
 /jbehave/.project
 /jbehave/.settings/
 /jbehave/target/
+/jbehave/logs/
+/jbehave/hold/

@@ -6,22 +6,19 @@ import org.jbehave.core.io.CodeLocations;
 import org.jbehave.core.junit.JUnitStory;
 import org.jbehave.core.reporters.CrossReference;
 import org.jbehave.core.reporters.StoryReporterBuilder;
-import org.jbehave.core.reporters.StoryReporterBuilder.Format;
+import org.jbehave.core.reporters.Format;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
-import org.junit.Test;
 
 import au.id.mcmaster.playwithjbehave.steps.SimpleSteps;
 
 public class SampleStory extends JUnitStory {
-	
 	  @Override 
 	  public Configuration configuration() {
 		  MostUsefulConfiguration configuration = new MostUsefulConfiguration();
-		configuration.useStoryReporterBuilder(new StoryReporterBuilder()
+		  configuration.useStoryReporterBuilder(new StoryReporterBuilder()
                 .withCodeLocation(CodeLocations.codeLocationFromClass(SampleStory.class))
-                .withDefaultFormats()
-                .withFormats(Format.XML,Format.HTML)
+                .withFormats(Format.XML,Format.HTML, Format.STATS)
                 .withCrossReference(new CrossReference()));
 	    return configuration;
 	  }
@@ -30,9 +27,4 @@ public class SampleStory extends JUnitStory {
 	    return new InstanceStepsFactory(configuration(),
 	                                    new SimpleSteps());
 	  }
-	  
-	  @Test
-	  public void test() {
-		  System.out.println("************ Testing ***********");
-	  }
-	}
+}
