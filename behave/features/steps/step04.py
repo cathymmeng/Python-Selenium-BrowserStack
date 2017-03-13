@@ -1,7 +1,7 @@
 from behave import given, when, then
 from lib.scratch import Scratch
 
-@when('loading {url}')
+@when('loading {url} in the browser')
 def step_impl(context, url):
     context.scratch = Scratch('chrome');
     context.scratch.loadUrl(url);
