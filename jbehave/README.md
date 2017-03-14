@@ -17,3 +17,10 @@ mvn clean test
 - The stories are mapped to Step implementation in the StorySuite class.
 - Step classes are just POJOs with methods annotated with jBehave annotations.
 - Step implementation classes can be found within the src/test/java folder.
+
+### Code Organisation
+
+- BDD stories are written in story files
+- Story files are bound to Steps by annotating a class in the StorySuite class.
+- The Step classes define actions to be done
+- the Steps use Adapters to do the work, which containing the knowledge of how to interact with a page.
