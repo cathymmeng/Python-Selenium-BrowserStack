@@ -1,0 +1,9 @@
+.DS_Store
+*.pyc
+/polymer/bower_components/
+/jbehave/.classpath
+/jbehave/.project
+/jbehave/.settings/
+/jbehave/target/
+/jbehave/logs/
+/jbehave/hold/
