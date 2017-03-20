@@ -11,7 +11,7 @@ https://nodejs.org/en/download/
 
 
 ```bash
-npm install bower
+npm install -g bower
 ```
 
 #### Download project Bower dependencies
